@@ -1,0 +1,3 @@
+<% if @errors.present? %>
+  App.ErrorHandler.add_errors("#signin", "<%= j(raw(@errors.to_json)) %>")
+<% end %>

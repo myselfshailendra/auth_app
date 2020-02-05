@@ -12,11 +12,11 @@ module Pages
         fill_in "user_#{field[0]}", with: field[1] unless field[0].eql?(:accept_terms)
       end
       execute_script("$('#user_accept_terms').click()") if details[:accept_terms].eql?('1')
-      click_on 'signup'
+      click_on 'sign up'
     end
 
     def has_error?(error)
-      has_css? '#signup-page span', text: error
+      has_css? '.signup-page span', text: error
     end
 
     def with_blank_details

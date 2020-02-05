@@ -1,1 +1,20 @@
-<h1>Sign In</h1>
+<div id="signin" class="signin-page">
+  <div class="form">
+    <h1>Sign In</h1>
+    <%= form_tag(:sessions, remote: true) do |f| %>
+      <div class="form-group">
+        <%= text_field_tag :email, "", placeholder: 'Email', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= password_field_tag :password, "",placeholder: 'Password', class: "form-control", data: {errorkey: "password"} %>
+      </div>
+      <div class="form-group">
+        <%= check_box_tag :remember_me, 'yes', false, class: 'form-control terms' %>
+        <span class="temrs_text">Remember me</span>
+      </div>
+      <%= submit_tag 'sign in', class: 'button' %>
+      <span class="errors"></span>
+      <p class="message">New here? <%=link_to 'Sign Up', sign_up_path %></p>
+    <% end %>
+  </div>
+</div>

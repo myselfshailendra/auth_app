@@ -1,4 +1,4 @@
-<div id="signup-page">
+<div id="signup" class="signup-page">
   <div class="form">
     <h1>Sign Up</h1>
     <%= form_for(@user, remote: true) do |f| %>
@@ -16,9 +16,9 @@
         <span class="temrs_text">I have read and agree to the terms.</span>
       </div>
 
-      <%= f.submit :signup, class: 'button' %>
+      <%= f.submit 'sign up', class: 'button' %>
       <span class="errors"></span>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <p class="message">Already registered? <%=link_to 'Sign In', sign_in_path %></p>
     <% end %>
   </div>
 </div>

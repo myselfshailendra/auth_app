@@ -15,4 +15,12 @@ RSpec.describe User, type: :model do
       user.save
     end
   end
+
+  describe '.authenticate_user' do
+    let(:user) { FactoryBot.create :user, password: 'Abc@1234', password_confirmation: 'Abc@1234', accept_terms: '1' }
+
+    it 'authenticate user via provided password' do
+      expect(user.authenticate_user('Abc@1234')).to be_truthy
+    end
+  end
 end

@@ -23,4 +23,8 @@ class User < ApplicationRecord
   def encrypt_password
     self.password_digest = PasswordEncryptionService.new(self).perform
   end
+
+  def authenticate_user(password)
+    password && password_digest.eql?(PasswordEncryptionService.new.encrypt(password)) ? true : false
+  end
 end

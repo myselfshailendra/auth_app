@@ -19,4 +19,16 @@ describe PasswordEncryptionService do
     it { expect(password_encryption_service.perform.length).to eq(57) }
     it { expect(password_encryption_service.perform).to eq(User.last.password_digest) }
   end
+
+  describe '.encrypt' do
+    let(:encrypted_password) { PasswordEncryptionService.new.encrypt('Abcd@123') }
+    before do
+      db_user = FactoryBot.create :user, email: 'test1@mailinator.com', password: 'Abcd@123', password_confirmation: 'Abcd@123'
+      PasswordEncryptionService.new(db_user)
+      db_user.save
+    end
+
+    it { expect(encrypted_password.length).to eq(57) }
+    it { expect(encrypted_password).to eq(User.last.password_digest) }
+  end
 end

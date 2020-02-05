@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_confirmation_of(:password) }
 
   describe '.encrypt_password' do
-    let(:user) { FactoryBot.create :user, password: 'abc123', password_confirmation: 'abc123' }
+    let(:user) { FactoryBot.create :user, password: 'Abc@1234', password_confirmation: 'Abc@1234', accept_terms: '1' }
 
     it 'call encrypt_password callback method' do
       expect(user).to receive(:encrypt_password)

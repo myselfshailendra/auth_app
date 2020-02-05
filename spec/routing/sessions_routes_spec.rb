@@ -6,6 +6,10 @@ RSpec.describe 'SessionsRoutes', type: :routing do
   end
 
   describe 'POST #create' do
-    it { expect(POST: '/sessions').to route_to(controller: 'sessions', action: 'create') }
+    it { expect(post: '/sessions').to route_to(controller: 'sessions', action: 'create') }
+  end
+
+  describe 'DELETE #destroy' do
+    it { expect(delete: '/sign_out').to route_to(controller: 'sessions', action: 'destroy') }
   end
 end

@@ -1,18 +1,23 @@
-<div class="signup-page">
+<div id="signup-page">
   <div class="form">
     <h1>Sign Up</h1>
     <%= form_for(@user, remote: true) do |f| %>
-      <%= f.text_field :email, placeholder: 'Email'%>
-      <%= f.password_field :password, placeholder: 'Password'%>
-      <%= f.password_field :password_confirmation, placeholder: 'Confirm Password'%>
-      <%= f.submit :Signup, class: 'button' %>
-      <% if @user.errors.any? %>
-        <ul class="Signup_Errors">
-          <% for message_error in @user.errors.full_messages %>
-            <li>* <%= message_error %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <div class="form-group">
+        <%= f.text_field :email, placeholder: 'Email', data: {errorkey: "email"} %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, placeholder: 'Password', data: {errorkey: "password"} %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', data: {errorkey: "password_confirmation"} %>
+      </div>
+      <div class="form-group">
+        <%= f.check_box :accept_terms, placeholder: "sadads", class: 'terms', data: {errorkey: "accept_terms"} %>
+        <span class="temrs_text">I have read and agree to the terms.</span>
+      </div>
+
+      <%= f.submit :signup, class: 'button' %>
+      <span class="errors"></span>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     <% end %>
   </div>

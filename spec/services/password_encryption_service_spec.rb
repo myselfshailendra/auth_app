@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PasswordEncryptionService do
-  let(:user) { FactoryBot.create :user, password: 'abc123', password_confirmation: 'abc123' }
+  let(:user) { FactoryBot.create :user, password: 'Abcd@123', password_confirmation: 'Abcd@123' }
   let(:password_encryption_service) { PasswordEncryptionService.new(user) }
 
   describe '.initialize' do
@@ -11,7 +11,7 @@ describe PasswordEncryptionService do
 
   describe '#perform' do
     before do
-      db_user = FactoryBot.create :user, email: 'test1@mailinator.com', password: 'abc123', password_confirmation: 'abc123'
+      db_user = FactoryBot.create :user, email: 'test1@mailinator.com', password: 'Abcd@123', password_confirmation: 'Abcd@123'
       PasswordEncryptionService.new(db_user)
       db_user.save
     end

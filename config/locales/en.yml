@@ -30,4 +30,17 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: 'Email address is already taken'
+              blank: "Email address can't be blank"
+              invalid: "Email address is invalid"
+            password:
+              blank: "Password can't be blank"
+              too_short: "Password is too short (minimum is %{count} characters)"
+              invalid: "Password is invalid"
+            accept_terms: 'Please accept terms'

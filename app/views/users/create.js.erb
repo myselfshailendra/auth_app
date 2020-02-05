@@ -1,0 +1,3 @@
+<% if @user.errors.present? %>
+  App.ErrorHandler.add_errors("#signup-page", "<%= j(raw(@user.errors.to_json)) %>")
+<% end %>

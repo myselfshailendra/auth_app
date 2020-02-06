@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+.flash-msg {
+    background-color: rgba(255,255,255,0.8);
+    padding: 20px;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    padding: 20px;
+}
 .login-page, .signup-page {
   width: 400px;
   padding: 3% 0 0;

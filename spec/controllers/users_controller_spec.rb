@@ -62,7 +62,7 @@ RSpec.describe UsersController, type: :controller do
       let(:password_confirmation) { 'Xyz@1234' }
       let(:accept_terms) { '1' }
 
-      it { expect(user_errors).to eq(["Password confirmation doesn't match Password", "Password confirmation doesn't match Password"])}
+      it { expect(user_errors).to eq(["Password confirmation doesn't match Password"])}
       it { expect(assigns_user).to render_template('create')}
     end
 

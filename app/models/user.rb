@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :authentications, dependent: :destroy
+
   PASSWORD_LENGTH = 8..16
   PASSWORD_FORMAT = /\A
   (?=.{8,})          # Must contain 8 or more characters
@@ -8,6 +10,7 @@ class User < ApplicationRecord
   (?=.*[[:^alnum:]]) # Must contain a symbol
 /x
   attr_accessor :password, :password_confirmation, :accept_terms
+
   validates :email, presence: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
   validates :password,
             presence: true,

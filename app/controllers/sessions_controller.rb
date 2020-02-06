@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate_user(params[:password])
-      sign_in_user(@user)
+      if params[:remember_me].eql?('yes')
+        create_cookies(@user)
+      else
+        sign_in_user(@user)
+      end
       redirect_to :dashboard_index
     else
       @errors = {password: ["Invalid credentials!"]}

@@ -5,10 +5,24 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
+  def create_cookies(user)
+    authentication = user.authentications.create
+    cookies[:auth_token] = {value: authentication.auth_token, expires: Time.now + 2.week}
+  end
+
   def current_user
+    current_user_by_cookies
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    @current_user
   end
   helper_method :current_user
+
+  def current_user_by_cookies
+    if cookies[:auth_token]
+      authentication = Authentication.find_by(auth_token: cookies[:auth_token])
+      @current_user ||= authentication.user if authentication
+    end
+  end
 
   def authenticate_user!
     if current_user

@@ -50,7 +50,7 @@ Then(/^I should see (.*?) errors$/) do |type|
   when 'invalid password'
     expect(@registration_page).to have_error('Password is invalid')
   when 'mismatched password'
-    expect(@registration_page).to have_error('doesn\'t match Password, doesn\'t match Password')
+    expect(@registration_page).to have_error('doesn\'t match Password')
   when 'terms'
     expect(@registration_page).to have_error('Please accept terms')
   end
